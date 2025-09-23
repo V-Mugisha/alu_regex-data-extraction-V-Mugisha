@@ -27,6 +27,13 @@ function extractCurrency(text) {
     	return text.match(pattern) || [];
 }
 
+function extractHashtags(text) {
+    	// Pattern matches: # followed by word characters (letters, numbers, underscore)
+    	
+	const pattern = /#[a-zA-Z0-9_]+/g;
+    	return text.match(pattern) || [];
+}
+
 // Test function to demonstrate all regex functions 
 function testAllExtractions() {
     	// Test all regex patterns with sample data
@@ -64,5 +71,11 @@ function testAllExtractions() {
     	const currencies = extractCurrency(sampleText);
     	currencies.forEach(currency => {
         	console.log(`Found currency: ${currency}`);
+    	});
+
+	console.log("\n=== HASHTAGS ===");
+    	const hashtags = extractHashtags(sampleText);
+    	hashtags.forEach(hashtag => {
+        	console.log(`Found hashtag: ${hashtag}`);
     	});
 }
