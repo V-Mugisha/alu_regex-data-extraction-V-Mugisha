@@ -1,4 +1,4 @@
-function extractEmail(text) {
+function extractEmails(text) {
 	// Pattern for emails. Matchs patters like: user@example.com or firstname.lastname@company.co.uk
 	// Explanation: word characters + dots, @ symbol, domain with dots
 	
@@ -13,3 +13,30 @@ function extractPhoneNumbers(text) {
 	return text.match(pattern) || [];
 }
 
+// Test function to demonstrate all regex functions 
+function testAllExtractions() {
+    // Test all regex patterns with sample data
+   
+    const sampleText = `
+    Contact us at user@example.com or admin@company.co.uk for more info.
+    Visit our website at https://www.example.com or https://subdomain.example.org/page
+    Call us at (123) 456-7890, 123-456-7890, or 123.456.7890
+    Use credit card 1234 5678 9012 3456 or 1234-5678-9012-3456
+    Meeting times: 14:30, 2:30 PM, 10:15 AM
+    HTML code: <p>Hello</p> <div class="example">Test</div> <img src="image.jpg" alt="description">
+    Follow us: #example #ThisIsAHashtag #coding
+    Prices: $19.99, $1,234.56, $50.00
+    `;
+
+    console.log("=== EMAIL ADDRESSES ===");
+    const emails = extractEmails(sampleText);
+    emails.forEach(email => {
+        console.log(`Found email: ${email}`);
+    });
+
+    console.log("\n=== PHONE NUMBERS ===");
+    const phones = extractPhoneNumbers(sampleText);
+    phones.forEach(phone => {
+        console.log(`Found phone numbers: ${phone}`);
+    });
+}
