@@ -20,6 +20,13 @@ function extractUrls(text) {
 	return text.match(pattern) || [];
 }
 
+function extractCurrency(text) {
+    	// Pattern for currency extraction: $ symbol, digits with optional commas, and decimal points
+    	
+	const pattern = /\$\d{1,3}(?:,\d{3})*(?:\.\d{2})?/g;
+    	return text.match(pattern) || [];
+}
+
 // Test function to demonstrate all regex functions 
 function testAllExtractions() {
     	// Test all regex patterns with sample data
@@ -51,5 +58,11 @@ function testAllExtractions() {
     	const urls = extractUrls(sampleText);
    	urls.forEach(url => {
         	console.log(`Found URL: ${url}`);
+    	});
+
+	console.log("\n=== CURRENCY ===");
+    	const currencies = extractCurrency(sampleText);
+    	currencies.forEach(currency => {
+        	console.log(`Found currency: ${currency}`);
     	});
 }
