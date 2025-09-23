@@ -1,5 +1,15 @@
-// Pattern for emails. Matches patterns like: user@example.com, firstname.lastname@company.co.uk
-const emailsRegexPattern = /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/g;
+function extractEmail(text) {
+	// Pattern for emails. Matchs patters like: user@example.com or firstname.lastname@company.co.uk
+	// Explanation: word characters + dots, @ symbol, domain with dots
+	
+	const pattern = /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/g;
+   	return text.match(pattern) || [];
+}
 
-// Pattern explanation: optional parentheses for area code, digits with separators
-const phoneNumbersRegexPattern = /(?:\(\d{3}\)\s?|\d{3}[-.]?)\d{3}[-.]?\d{4}/g;
+function extractPhoneNumbers(text) {
+	// Pattern explanation: optional parentheses for area code, digits with separators
+	
+	const pattern = /(?:\(\d{3}\)\s?|\d{3}[-.]?)\d{3}[-.]?\d{4}/g;
+	return text.match(pattern) || [];
+}
+
