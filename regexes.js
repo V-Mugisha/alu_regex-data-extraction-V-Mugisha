@@ -79,3 +79,5 @@ function testAllExtractions() {
         	console.log(`Found hashtag: ${hashtag}`);
     	});
 }
+
+testAllExtractions()
